@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+	public float Speed;
+	
+	private Rigidbody2D Rigidbody2D;	
+	private float Horizontal;
+	private float Vertical;
+
+	//Start is called before the first frame update
+	void Start()
+	{
+		Rigidbody2D = GetComponent<Rigidbody2D>();
+	}
+
+
+	//Update is called once per frame
+
+	void Update()
+	{
+	float Horizontal = Input.GetAxisRaw("Horizontal");
+
+	float Vertical = Input.GetAxisRaw("Vertical")
+		
+	}
+
+	private void FixedUpdate()
+	{
+	/Aplicar Freeze Rotation Z en el apartado Rigidbody2D
+	Rigidbody2D.velocity = new Vector2(Horizontal*Speed, Vertical*Speed)
+	}
+}
