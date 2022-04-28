@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public float Speed;
-	
-	private Rigidbody2D Rigidbody2D;	
+	public new Rigidbody2D rigidbody2D;
+
 	private float Horizontal;
 	private float Vertical;
 
 	//Start is called before the first frame update
 	void Start()
 	{
-		Rigidbody2D = GetComponent<Rigidbody2D>();
+		rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 
@@ -21,15 +21,24 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
-	float Horizontal = Input.GetAxisRaw("Horizontal");
+		//float Horizontal = Input.GetAxisRaw("Horizontal");
+		float horizontal = Input.GetAxis("Horizontal");
 
-	float Vertical = Input.GetAxisRaw("Vertical")
-		
+		float vertical = Input.GetAxis("Vertical");
+
+		rigidbody2D.velocity = new Vector2(vertical * Speed, rigidbody2D.velocity.y);
+		rigidbody2D.velocity = new Vector2(horizontal * Speed, rigidbody2D.velocity.x);
+		//float Vertical = Input.GetAxisRaw("Vertical");
+
+		//if (Input.GetKeyDown(KeyCode.W))
+		//{
+		//	rigidbody2D.AddForce(new Vector2(0, Speed));
+		//}
 	}
 
 	private void FixedUpdate()
 	{
-	/Aplicar Freeze Rotation Z en el apartado Rigidbody2D
-	Rigidbody2D.velocity = new Vector2(Horizontal*Speed, Vertical*Speed)
+		// Aplicar Freeze Rotation Z en el apartado Rigidbody2D
+		//rigidbody2D.velocity = new Vector2(Horizontal * Speed, Vertical * Speed);
 	}
 }
