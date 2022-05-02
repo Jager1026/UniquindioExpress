@@ -25,34 +25,32 @@ public class Coin : MonoBehaviour
     }
 
     public void move()
-    {
+    {   
+        //se mueve la moneda
         gameObject.transform.position = gameObject.transform.position + new Vector3(-3, 0, 0) * Time.deltaTime * moveSpeed;
     }
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //se mueve la moneda
         gameObject.transform.position = gameObject.transform.position + new Vector3(-3, 0, 0) * Time.deltaTime * moveSpeed;
-        // move obstacle in certain direction over time
-        //transform.position += moveDir * moveSpeed * Time.deltaTime;
-        // rotate obstacle
-        //transform.Rotate(Vector3.back * moveDir.x * (moveSpeed * 20) * Time.deltaTime);
+
     }
 
     private void OnTriggerEnter2D (Collider2D other)
     {
         if (other.gameObject.tag == "player")
-        {
+        {   
+            //Se llama al metodo para que cada vez que se triggerea una moneda, se añadan puntos de acuerdo a CantidaPuntos
             //puntaje.SumarPuntos(CantidadPuntos);
+
+            //se activa la transicion del aniamtor
             animator.SetBool("wasPicked",true);
+
+            //se reproduce el sonido cuando la moneda es recogida
             Camera.main.GetComponent<AudioSource>().PlayOneShot(sound);
-            //tiemporeinicio += Time.time;
-            //if (tiemporeinicio >= 1)
-            //{
-             //   animator.SetBool("ResetAnimation", true);
-             //  Debug.Log("Animacion Reiniciada");
-                // animator.SetBool("wasPicked", false);
-            //    tiemporeinicio = 0;
-           // }
+
+            //se destruye el objeto 0.8 segundos despues (asi se observa bien la animacion)
             Destroy(gameObject,0.8f);
         }
     }
