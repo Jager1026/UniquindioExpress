@@ -10,6 +10,7 @@ public class Puntaje : MonoBehaviour
 
     private void Start()
     {
+        //se accede al componente de la interfaz
         textMesh = GetComponent<TextMeshProUGUI>();
     }
 
@@ -17,7 +18,10 @@ public class Puntaje : MonoBehaviour
 
     public void agregarPuntos()
     {
+        //se añaden puntos cada segundo
         puntos += Time.deltaTime;
+
+        //se escriben los puntos en la interfaz
         textMesh.text = puntos.ToString("0");
     }
     // private void Update()
@@ -25,6 +29,8 @@ public class Puntaje : MonoBehaviour
     //   puntos += Time.deltaTime;
     //    textMesh.text = puntos.ToString("0");
     //  }
+
+    //metodo para sumar puntos
     public void SumarPuntos(float PuntosEntrada)
     {
         puntos += PuntosEntrada;
