@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
 	public float Speed;
 	public new Rigidbody2D rigidbody2D;
@@ -10,18 +10,19 @@ public class PlayerMovement : MonoBehaviour
 	private float Horizontal;
 	private float Vertical;
 
+	private float CantidadPuntos;
+	[SerializeField] private score puntaje;
+
 	//Start is called before the first frame update
 	void Start()
 	{
 		rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
-
 	//Update is called once per frame
 
 	void Update()
 	{
-		//float Horizontal = Input.GetAxisRaw("Horizontal");
 		float horizontal = Input.GetAxis("Horizontal");
 
 		float vertical = Input.GetAxis("Vertical");
@@ -40,5 +41,14 @@ public class PlayerMovement : MonoBehaviour
 	{
 		// Aplicar Freeze Rotation Z en el apartado Rigidbody2D
 		//rigidbody2D.velocity = new Vector2(Horizontal * Speed, Vertical * Speed);
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.CompareTag("moneda"))
+		{
+			puntaje.SumarPuntos(10);
+		}
+
 	}
 }
