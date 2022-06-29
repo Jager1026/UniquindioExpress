@@ -41,7 +41,7 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //Se llama al metodo para que cada vez que se triggerea una moneda, se aÃ±adan puntos de acuerdo a CantidaPuntos
+            //Se llama al metodo para que cada vez que se triggerea una moneda, se añadan puntos de acuerdo a CantidaPuntos
             //puntaje.SumarPuntos(CantidadPuntos);
 
             //se activa la transicion del aniamtor

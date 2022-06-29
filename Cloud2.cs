@@ -8,8 +8,8 @@ public class Cloud2 : MonoBehaviour
     // Start is called before the first frame update
 
     //public Vector3 moveDir;         // direction to move in
-    public float moveSpeed = 0.5f;         // speed to move at along moveDir
-    public float Timetolive = 15f;
+    public float moveSpeed = 0.7f;         // speed to move at along moveDir
+    public float Timetolive = 25f;
 
 
     // private float aliveTime = 8.0f; // time before object is destroyed
